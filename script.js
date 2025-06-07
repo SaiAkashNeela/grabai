@@ -92,13 +92,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.querySelector('.email-input');
     const signupButton = document.querySelector('.signup-button');
 
+    // Modal elements
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeButton = document.querySelector('.close-button');
+
+    // Function to show the modal
+    function showModal(message) {
+        modalMessage.textContent = message;
+        modal.style.display = 'flex'; // Use flex to center content
+    }
+
+    // Function to hide the modal
+    function hideModal() {
+        modal.style.display = 'none';
+    }
+
+    // Close modal when close button is clicked
+    closeButton.addEventListener('click', hideModal);
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            hideModal();
+        }
+    });
+
     signupButton.addEventListener('click', () => {
         const email = emailInput.value;
         if (email) {
-            alert(`Thank you for your interest! We'll notify you at ${email}`);
-            emailInput.value = '';
+            // Basic email validation (can be enhanced)
+            if (email.includes('@') && email.includes('.')) {
+                showModal(`Thank you for your interest in GrabAI! We'll notify you at ${email} when our AI platform is ready.`);
+                emailInput.value = '';
+            } else {
+                showModal('Error: Invalid data stream detected. Please enter a valid email address for GrabAI updates.');
+            }
         } else {
-            alert('Please enter your email address.');
+            showModal('Error: Input required. Please provide your data stream (email address) to get GrabAI updates.');
         }
     });
 });

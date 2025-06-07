@@ -175,3 +175,63 @@ body::after {
 
 /* Font import (conceptual - will need to link from Google Fonts or similar) */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    backdrop-filter: blur(5px); /* Glassy effect */
+    /* Removed display: flex; from here */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(45deg, rgba(230, 0, 230, 0.1), rgba(0, 230, 230, 0.1)); /* Neon gradient glassy */
+    margin: auto;
+    padding: 40px;
+    border: 2px solid #00e6e6;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 230, 230, 0.5), 0 0 40px rgba(230, 0, 230, 0.5);
+    animation: modal-appear 0.5s forwards;
+}
+
+.modal-content p {
+    font-size: 1.5em;
+    color: #00e6e6;
+    text-shadow: 0 0 5px #00e6e6;
+}
+
+.close-button {
+    color: #e600e6;
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1.2);
+}
+
+@keyframes modal-appear {
+    from { opacity: 0; transform: translateY(-50px) scale(0.8); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
