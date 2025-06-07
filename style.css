@@ -120,9 +120,23 @@ body {
     animation: float 10s infinite ease-in-out alternate;
 }
 
+.cursor-particle {
+    position: absolute;
+    background-color: rgba(230, 0, 230, 0.8); /* Pinkish neon for cursor */
+    border-radius: 50%;
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 9999; /* Ensure it's on top */
+}
+
 @keyframes float {
     0% { transform: translateY(0) translateX(0); opacity: 0.5; }
     100% { transform: translateY(-20px) translateX(20px); opacity: 0.8; }
+}
+
+@keyframes float-subtle {
+    0% { transform: translate(0, 0); opacity: 0.4; }
+    50% { transform: translate(10px, 10px); opacity: 0.6; }
+    100% { transform: translate(0, 0); opacity: 0.4; }
 }
 
 /* Holographic/Circuitry overlay (conceptual - can be done with pseudo-elements or JS) */
